@@ -19,10 +19,21 @@ exports.handler = async (event) => {
     const textData = await apiRes.text();
 
     let parsedData = {};
+
+    // যদি PayIcon সঠিক JSON পাঠায়
     try {
       parsedData = JSON.parse(textData);
     } catch (e) {
-      parsedData = { status: "RAW_RESPONSE", message: textData };
+      // যদি PayIcon কোনো HTML/CSS এরর পেজ পাঠায় (যেমন Low Balance ইত্যাদি)
+      let cleanMsg = "Provider rejected the request.";
+      if (textData.toLowerCase().includes("balance")) {
+        cleanMsg = "PayIcon Wallet-এ ব্যালেন্স নেই! দয়া করে PayIcon-এ ব্যালেন্স যোগ করুন।";
+      } else if (textData.toLowerCase().includes("token") || textData.toLowerCase().includes("auth")) {
+        cleanMsg = "Invalid API Token or Authentication Error.";
+      } else if (textData.toLowerCase().includes("operator")) {
+        cleanMsg = "Invalid Operator Code.";
+      }
+      parsedData = { status: "FAILURE", message: cleanMsg };
     }
 
     return {
