@@ -16,12 +16,19 @@ exports.handler = async (event) => {
     const apiUrl = `https://payicon.in/api/recharge?token=${token}&number=${number}&operator=${providerCode}&amount=${amount}&orderid=${txnId}&callback=${callbackUrl}`;
 
     const apiRes = await fetch(apiUrl);
-    const data = await apiRes.json();
+    const textData = await apiRes.text();
+
+    let parsedData = {};
+    try {
+      parsedData = JSON.parse(textData);
+    } catch (e) {
+      parsedData = { status: "RAW_RESPONSE", message: textData };
+    }
 
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
+      body: JSON.stringify(parsedData)
     };
   } catch (err) {
     return {
