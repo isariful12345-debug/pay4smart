@@ -1,51 +1,88 @@
 exports.handler = async (event) => {
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Content-Type": "application/json"
+  };
+
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ message: "Successful preflight call" })
+    };
+  }
+
   if (event.httpMethod !== "POST") {
-    return { 
-      statusCode: 405, 
-      body: JSON.stringify({ status: "FAILURE", message: "Method Not Allowed" }) 
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({ status: "FAILED", message: "Method Not Allowed" })
     };
   }
 
   try {
-    const { number, amount, providerCode, txnId } = JSON.parse(event.body);
+    const data = JSON.parse(event.body || "{}");
+    const { number, amount, providerCode, txnid } = data;
 
-    const token = "DQQVHAWL3H1S8GMB2sYatbtB4hpvjD7p";
-    const callbackUrl = encodeURIComponent("https://pay4smart.netlify.app/.netlify/functions/payment-callback");
+    if (!number || !amount || !providerCode || !txnid) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ status: "FAILED", message: "Missing required parameters" })
+      };
+    }
 
-    // PayIcon API Request URL
-    const apiUrl = `https://payicon.in/api/recharge?token=${token}&number=${number}&operator=${providerCode}&amount=${amount}&orderid=${txnId}&callback=${callbackUrl}`;
+    // Payicon এর নিউমেরিক কোড ম্যাপিং
+    const opLower = String(providerCode || "").toLowerCase().trim();
+    let finalOperator = providerCode;
 
-    const apiRes = await fetch(apiUrl);
-    const textData = await apiRes.text();
+    if (opLower.includes("jio")) {
+      finalOperator = "8";
+    } else if (opLower.includes("vi") || opLower.includes("vodafone") || opLower.includes("idea")) {
+      finalOperator = "10";
+    } else if (opLower.includes("bsnl")) {
+      finalOperator = "6";
+    } else if (opLower.includes("airtel")) {
+      // ৩৪৯ বা তার বেশি হলে ৫, অন্যথায় সাধারণ এয়ারটেল কোড (সাধারণত ১)
+      finalOperator = Number(amount) >= 349 ? "5" : "1";
+    }
 
-    let parsedData = {};
+    const token = "DQQVHAWL3H1S8GMB2SYatbt04hpvjD7P";
+    
+    const host = event.headers.host || "dovik-5f6044.netlify.app";
+    const callbackUrl = encodeURIComponent(`https://${host}/.netlify/functions/payment-callback`);
 
-    // যদি PayIcon সঠিক JSON পাঠায়
+    const apiUrl = `https://payicon.in/api/recharge?token=${token}&number=${number}&operator=${finalOperator}&dejamount=${amount}&orderid=${txnid}&callback=${callbackUrl}`;
+
+    const fetchResponse = await fetch(apiUrl);
+    const resultText = await fetchResponse.text();
+
+    let jsonResponse;
     try {
-      parsedData = JSON.parse(textData);
+      jsonResponse = JSON.parse(resultText);
     } catch (e) {
-      // যদি PayIcon কোনো HTML/CSS এরর পেজ পাঠায় (যেমন Low Balance ইত্যাদি)
-      let cleanMsg = "Provider rejected the request.";
-      if (textData.toLowerCase().includes("balance")) {
-        cleanMsg = "PayIcon Wallet-এ ব্যালেন্স নেই! দয়া করে PayIcon-এ ব্যালেন্স যোগ করুন।";
-      } else if (textData.toLowerCase().includes("token") || textData.toLowerCase().includes("auth")) {
-        cleanMsg = "Invalid API Token or Authentication Error.";
-      } else if (textData.toLowerCase().includes("operator")) {
-        cleanMsg = "Invalid Operator Code.";
-      }
-      parsedData = { status: "FAILURE", message: cleanMsg };
+      jsonResponse = { raw: resultText };
     }
 
     return {
       statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(parsedData)
+      headers,
+      body: JSON.stringify({
+        status: "SUCCESS",
+        data: jsonResponse
+      })
     };
-  } catch (err) {
+
+  } catch (error) {
     return {
       statusCode: 500,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: "FAILURE", message: err.message })
+      headers,
+      body: JSON.stringify({
+        status: "FAILED",
+        message: error.message || "Internal Server Error"
+      })
     };
   }
 };
