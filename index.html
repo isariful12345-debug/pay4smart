@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
-      --bg-color: #f7f5fc;
+      --bg-color: #f7f6fc;
       --card-bg: #ffffff;
       --primary-purple: #5c1bb7;
-      --icon-box-bg: #f3ecfb;
+      --icon-box-bg: #f4ecfc;
       --icon-color: #5c1bb7;
-      --text-main: #231f20;
-      --text-muted: #666666;
-      --border-color: rgba(0, 0, 0, 0.08);
+      --text-main: #181c2e;
+      --text-muted: #64748b;
+      --border-color: rgba(0, 0, 0, 0.06);
       --input-border: #e2e8f0;
       --plan-green: #10b981;
       --danger-red: #ef4444;
@@ -24,11 +24,11 @@
       --bg-color: #0d1117;
       --card-bg: #161b22;
       --primary-purple: #8b5cf6;
-      --icon-box-bg: #21262d;
-      --icon-color: #a78bfa;
+      --icon-box-bg: #231936;
+      --icon-color: #b388ff;
       --text-main: #f0f6fc;
       --text-muted: #8b949e;
-      --border-color: rgba(255, 255, 255, 0.1);
+      --border-color: rgba(255, 255, 255, 0.08);
       --input-border: #30363d;
       --plan-green: #34d399;
       --danger-red: #f87171;
@@ -40,6 +40,19 @@
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+      -webkit-touch-callout: none !important;
+    }
+
+    input, textarea {
+      -webkit-user-select: text !important;
+      -moz-user-select: text !important;
+      -ms-user-select: text !important;
+      user-select: text !important;
+      -webkit-touch-callout: default !important;
     }
 
     html, body {
@@ -59,14 +72,15 @@
 
     .app-container {
       width: 100%;
-      max-width: 420px;
+      max-width: 410px;
       min-height: 100vh;
       background: var(--bg-color);
       display: flex;
       flex-direction: column;
       position: relative;
-      padding-bottom: 76px;
+      padding-bottom: 74px;
       overflow-x: hidden;
+      overflow-y: auto;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
     }
 
@@ -76,7 +90,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
-      max-width: 420px;
+      max-width: 410px;
       height: 100%;
       min-height: 100vh;
       background: #ffffff;
@@ -128,7 +142,7 @@
     }
 
     .splash-brand-text {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 900;
       letter-spacing: -0.5px;
     }
@@ -150,10 +164,7 @@
       border-radius: 20px;
     }
 
-    .badge-secured i, .badge-bbps i {
-      font-size: 0.75rem;
-    }
-
+    .badge-secured i, .badge-bbps i { font-size: 0.75rem; }
     .badge-secured { background: rgba(0, 0, 0, 0.2); }
     .badge-bbps { background: rgba(255, 255, 255, 0.15); }
 
@@ -185,9 +196,7 @@
       margin-bottom: 18px;
     }
 
-    body.dark-mode .perm-info-card-exact {
-      background: #251838;
-    }
+    body.dark-mode .perm-info-card-exact { background: #251838; }
 
     .perm-badge-tick {
       width: 20px;
@@ -210,21 +219,10 @@
       font-weight: 600;
     }
 
-    body.dark-mode .perm-info-card-exact p {
-      color: #c4b5fd;
-    }
+    body.dark-mode .perm-info-card-exact p { color: #c4b5fd; }
 
-    .perm-item-group-exact {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .perm-item-single {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
+    .perm-item-group-exact { display: flex; flex-direction: column; gap: 16px; }
+    .perm-item-single { display: flex; flex-direction: column; gap: 5px; }
 
     .perm-item-title-row {
       display: flex;
@@ -234,14 +232,8 @@
       font-size: 1rem;
       font-weight: 800;
     }
-
-    .perm-item-title-row i {
-      font-size: 0.88rem;
-    }
-
-    body.dark-mode .perm-item-title-row {
-      color: #a78bfa;
-    }
+    .perm-item-title-row i { font-size: 0.88rem; }
+    body.dark-mode .perm-item-title-row { color: #a78bfa; }
 
     .perm-item-single p {
       font-size: 0.82rem;
@@ -268,10 +260,7 @@
       gap: 6px;
       cursor: pointer;
     }
-
-    .perm-deny-exact i {
-      font-size: 0.85rem;
-    }
+    .perm-deny-exact i { font-size: 0.85rem; }
 
     .perm-proceed-exact {
       background: #5c1bb7;
@@ -287,14 +276,11 @@
       cursor: pointer;
       box-shadow: 0 4px 14px rgba(92, 27, 183, 0.4);
     }
-
-    .perm-proceed-exact i {
-      font-size: 0.8rem;
-    }
+    .perm-proceed-exact i { font-size: 0.8rem; }
 
     /* AUTH INPUTS */
     .auth-top-header-clean {
-      padding: 12px 16px;
+      padding: 14px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -302,8 +288,8 @@
     }
 
     .circle-back-btn {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: #e2e8f0;
       border: none;
@@ -311,17 +297,13 @@
       align-items: center;
       justify-content: center;
       color: #334155;
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       cursor: pointer;
     }
-
-    body.dark-mode .circle-back-btn {
-      background: #21262d;
-      color: #f0f6fc;
-    }
+    body.dark-mode .circle-back-btn { background: #21262d; color: #f0f6fc; }
 
     .auth-body-container {
-      padding: 6px 20px 20px;
+      padding: 10px 22px 24px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -330,16 +312,29 @@
     }
 
     .manual-phone-input-card {
-      border: 1.5px solid var(--primary-purple);
-      border-radius: 14px;
-      padding: 10px 12px;
+      border: 2px solid var(--primary-purple);
+      border-radius: 16px;
+      padding: 14px 16px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       background: var(--card-bg);
       width: 100%;
-      box-shadow: 0 2px 10px rgba(92, 27, 183, 0.08);
+      box-shadow: 0 4px 16px rgba(92, 27, 183, 0.12);
       overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .manual-phone-input-card .country-flag {
+      font-weight: 800;
+      color: var(--text-main);
+      border-right: 2px solid var(--border-color);
+      padding-right: 12px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.05rem;
     }
 
     .manual-phone-input-card input,
@@ -352,17 +347,15 @@
       border: none;
       outline: none;
       background: transparent;
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 1.05rem;
+      font-weight: 700;
       color: var(--text-main);
-      user-select: text !important;
-      -webkit-user-select: text !important;
     }
 
     .manual-phone-input-card input::placeholder,
     .reg-custom-input-card input::placeholder {
-      font-size: 0.84rem;
-      font-weight: 600;
+      font-size: 0.94rem;
+      font-weight: 500;
       color: #94a3b8;
     }
 
@@ -371,9 +364,9 @@
       background: #5c1bb7;
       color: #ffffff;
       border: none;
-      padding: 12px;
+      padding: 14px;
       border-radius: 35px;
-      font-size: 0.98rem;
+      font-size: 1.02rem;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -381,12 +374,9 @@
       gap: 9px;
       cursor: pointer;
       box-shadow: 0 4px 16px rgba(92, 27, 183, 0.4);
-      margin-top: 20px;
+      margin-top: 22px;
     }
-
-    .big-purple-pill-btn i {
-      font-size: 0.82rem;
-    }
+    .big-purple-pill-btn i { font-size: 0.86rem; }
 
     /* OTP SCREEN */
     .otp-six-grid {
@@ -398,16 +388,15 @@
 
     .otp-single-card {
       width: 15%;
-      height: 48px;
-      border-radius: 11px;
+      height: 50px;
+      border-radius: 12px;
       border: 1.5px solid var(--input-border);
       background: var(--card-bg);
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 800;
       color: var(--text-main);
       outline: none;
-      user-select: text !important;
     }
 
     .otp-single-card:focus {
@@ -419,18 +408,14 @@
     .reg-custom-input-card {
       border: 1.5px solid var(--input-border);
       border-radius: 14px;
-      padding: 11px 13px;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
       background: var(--card-bg);
       margin-bottom: 14px;
     }
-
-    .reg-custom-input-card i {
-      color: #94a3b8;
-      font-size: 0.92rem;
-    }
+    .reg-custom-input-card i { color: #94a3b8; font-size: 0.95rem; }
 
     .checkbox-refer-group {
       display: flex;
@@ -438,211 +423,543 @@
       gap: 8px;
       margin: 6px 0 14px;
       cursor: pointer;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-main);
     }
 
     .checkbox-refer-group input[type="checkbox"] {
-      width: 17px;
-      height: 17px;
+      width: 18px;
+      height: 18px;
       accent-color: #5c1bb7;
       cursor: pointer;
     }
 
     .common-support-footer {
       text-align: center;
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       margin-top: 24px;
     }
-
     .common-support-footer a {
       color: #5c1bb7;
       font-weight: 700;
       text-decoration: none;
     }
 
-    /* TOP 2 BANNERS SLIDER (FULL DISPLAY FIX) */
-    .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px 6px; }
-    .logo { font-size: 1.3rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
-    .logo span { color: var(--primary-purple); }
-    .top-actions { display: flex; align-items: center; gap: 12px; }
-    .theme-toggle-btn { background: none; border: none; font-size: 1.05rem; color: var(--text-main); cursor: pointer; }
-    .whatsapp-btn { color: #25d366; font-size: 1.18rem; text-decoration: none; cursor: pointer; }
-    
-    .slider-container { 
-      position: relative; 
-      width: calc(100% - 24px); 
-      margin: 4px 12px 8px; 
-      height: 138px;
-      overflow: hidden; 
-      border-radius: 18px; 
-      box-shadow: 0 4px 12px rgba(92, 27, 183, 0.12); 
-      touch-action: pan-y; 
-      cursor: grab; 
+    /* TOP HEADER */
+    .top-bar-exact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 18px 10px;
+      background: var(--bg-color);
+      flex-shrink: 0;
     }
-    .slider-track { 
-      display: flex; 
-      width: 200%;
-      height: 100%; 
-      transform: translateX(0%); 
+
+    .exact-brand-logo {
+      font-size: 1.68rem;
+      font-weight: 900;
+      color: #11142d;
+      letter-spacing: -0.6px;
+      display: flex;
+      align-items: baseline;
     }
-    .slide { 
-      width: 50%;
-      height: 100%; 
-      position: relative; 
-      overflow: hidden; 
+    body.dark-mode .exact-brand-logo { color: #ffffff; }
+
+    .exact-brand-logo span.purple-smart {
+      color: #5c1bb7;
+      margin-left: 1px;
     }
-    
-    .cashback-banner-built-in { 
-      width: 100%; 
-      height: 100%; 
-      background: radial-gradient(circle at 80% 40%, #581c87 0%, #3b0764 70%, #240443 100%); 
-      display: flex; 
-      align-items: center; 
-      justify-content: space-between; 
-      padding: 10px 14px; 
-      color: #ffffff; 
-      position: relative; 
-      overflow: hidden; 
-      box-sizing: border-box;
+    .exact-brand-logo span.dot-accent {
+      color: #8b5cf6;
+      font-size: 1.7rem;
+      line-height: 0;
     }
-    .banner-left-content { 
-      z-index: 2; 
-      display: flex; 
-      flex-direction: column; 
+
+    .exact-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .exact-action-icon-btn {
+      background: none;
+      border: none;
+      color: #1f2438;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 2px;
+      transition: transform 0.15s ease;
     }
-    .banner-brand-chip { 
-      display: inline-flex; 
-      align-items: center; 
-      gap: 4px; 
-      background: rgba(255, 255, 255, 0.15); 
-      padding: 2px 7px; 
-      border-radius: 20px; 
-      font-size: 0.65rem; 
-      font-weight: 700; 
-      width: fit-content; 
-      margin-bottom: 2px; 
+    .exact-action-icon-btn:active { transform: scale(0.9); }
+    body.dark-mode .exact-action-icon-btn { color: #e2e8f0; }
+
+    .exact-action-icon-btn.whatsapp-ic {
+      font-size: 1.7rem;
+      color: #25d366;
     }
-    .banner-brand-chip i { font-size: 0.65rem; }
-    .banner-upto-tag { 
-      font-size: 0.8rem; 
-      font-weight: 800; 
-      color: #facc15; 
-      text-transform: uppercase; 
-      letter-spacing: 0.8px; 
-      line-height: 1.1; 
+
+    .exact-action-icon-btn.dark-mode-ic {
+      font-size: 1.3rem;
+      color: var(--text-main);
     }
-    .banner-big-number { 
-      font-size: 2.1rem; 
-      font-weight: 900; 
-      color: #ffffff; 
-      line-height: 0.95; 
-      margin: 1px 0; 
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); 
+
+    /* SLIDER: FIXED FULL VIEW */
+    .slider-container {
+      position: relative;
+      width: calc(100% - 32px);
+      margin: 6px 16px 14px;
+      height: 185px;
+      flex-shrink: 0 !important;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(41, 8, 88, 0.22);
+      touch-action: pan-y;
+      cursor: grab;
+      background: #2a0845;
     }
-    .banner-cashback-title { 
-      font-size: 0.92rem; 
-      font-weight: 900; 
-      color: #fbbf24; 
-      text-transform: uppercase; 
-      letter-spacing: 0.4px; 
-      line-height: 1.1; 
+
+    .slider-track {
+      display: flex;
+      width: 200%;
+      height: 100%;
+      transform: translateX(0%);
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
     }
-    .banner-right-art { 
-      z-index: 2; 
-      position: relative; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      margin-right: 6px; 
-    }
-    .gold-coin-3d { 
-      width: 54px; 
-      height: 54px; 
-      border-radius: 50%; 
-      background: linear-gradient(135deg, #fef08a 0%, #eab308 50%, #a16207 100%); 
-      border: 2px solid #fef9c3; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      font-size: 1.55rem; 
-      font-weight: 900; 
-      color: #713f12; 
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35); 
-    }
-    
-    .slide-custom-2 { 
-      padding: 12px 14px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: space-between; 
-      color: #ffffff; 
-      background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%); 
-      cursor: pointer; 
+
+    .slide-item {
+      width: 50%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
       box-sizing: border-box;
+      flex-shrink: 0;
     }
-    .slide-content h3 { font-size: 0.98rem; font-weight: 800; margin-bottom: 2px; }
-    .slide-content p { font-size: 0.72rem; opacity: 0.9; margin-bottom: 8px; }
-    .slide-btn { background: #fff; color: #000; border: none; padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.72rem; cursor: pointer; }
-    .slide-art { font-size: 2.8rem; opacity: 0.95; }
-    .slider-dots { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; }
-    .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); }
-    .dot.active { width: 14px; border-radius: 10px; background: #ffffff; }
 
-    .wallet-card-exact { margin: 4px 12px 10px; background: #ffffff; border-radius: 16px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 3px 14px rgba(0, 0, 0, 0.04); border: 1px solid rgba(0, 0, 0, 0.06); }
-    body.dark-mode .wallet-card-exact { background: #161b22; border-color: rgba(255, 255, 255, 0.08); box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3); }
-    .wallet-info-group { display: flex; align-items: center; gap: 8px; }
-    .exact-wallet-icon-box { width: 34px; height: 34px; background: #e1f7ec; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    body.dark-mode .exact-wallet-icon-box { background: #064e3b; }
-    .exact-wallet-icon-box svg { width: 19px; height: 19px; fill: #10b981; }
-    body.dark-mode .exact-wallet-icon-box svg { fill: #34d399; }
-    .exact-wallet-texts { display: flex; flex-direction: column; justify-content: center; }
-    .exact-wallet-title { font-size: 0.8rem; color: #64748b; letter-spacing: 0.2px; line-height: 1.1; margin-bottom: 2px; }
-    body.dark-mode .exact-wallet-title { color: #94a3b8; }
-    .exact-wallet-amount { font-size: 1.18rem; font-weight: 900; color: #0f172a; letter-spacing: -0.3px; display: flex; align-items: baseline; gap: 2px; }
-    body.dark-mode .exact-wallet-amount { color: #f8fafc; }
-    .exact-wallet-amount .currency-symbol { font-size: 1.05rem; font-weight: 800; }
-    .exact-add-money-btn { background: #5b21b6; color: #ffffff; border: none; padding: 7px 12px; border-radius: 30px; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer; box-shadow: 0 3px 10px rgba(91, 33, 182, 0.3); white-space: nowrap; flex-shrink: 0; }
-    .exact-add-money-btn:active { transform: scale(0.95); background: #4c1d95; }
-    .exact-add-money-btn i { font-size: 0.62rem; font-weight: 900; }
+    .banner-img-screen {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      cursor: pointer;
+      background: #2a0845;
+    }
+    .banner-img-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+    }
 
-    /* LIGHTER & SLIGHTLY SMALLER SERVICE ICONS */
-    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); padding: 4px 12px 6px; gap: 8px 4px; }
-    .grid-item { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; }
-    .icon-box { width: 50px; height: 50px; background: var(--icon-box-bg); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: var(--icon-color); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); position: relative; }
-    .dynamic-operator-box { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border-radius: 15px; }
-    .op-slide-logo { position: absolute; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 900; opacity: 0; transform: translateY(12px); transition: opacity 0.3s ease, transform 0.3s ease; }
-    .op-slide-logo.active { opacity: 1; transform: translateY(0); }
-    .logo-jio-anim { background: #e11d48; font-size: 0.78rem; }
-    .logo-airtel-anim { background: #dc2626; font-size: 0.9rem; }
-    .logo-vi-anim { background: #ffffff; color: #dc2626; border: 1.5px solid #dc2626; font-style: italic; font-size: 0.78rem; }
-    .logo-bsnl-anim { background: #2563eb; font-size: 0.58rem; }
-    .grid-label { margin-top: 5px; font-size: 0.72rem; font-weight: 600; color: var(--text-main); line-height: 1.15; }
-    .section-title-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px 4px; }
-    .section-title-bar h4 { font-size: 1rem; font-weight: 800; color: var(--text-main); }
-    .see-all-link { font-size: 0.78rem; color: var(--primary-purple); text-decoration: none; font-weight: 700; }
+    .banner-insta-screen {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #180336 0%, #280856 50%, #3e0b7a 100%);
+      padding: 16px 20px;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
 
-    .home-refer-card { margin: 8px 12px 14px; background: var(--card-bg); border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); }
+    .insta-promo-left {
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+    }
+    .insta-promo-small-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #c4b5fd;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .insta-promo-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.2px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .insta-features-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .insta-feat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .insta-feat-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      color: #ffffff;
+    }
+    .insta-feat-label {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      white-space: nowrap;
+    }
+    .insta-promo-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .insta-app-card-3d {
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+      color: #ffffff;
+      font-size: 2.3rem;
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transition: all 0.25s ease;
+    }
+    .dot.active {
+      width: 18px;
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    /* MINI WALLET BAR */
+    .mini-wallet-container {
+      margin: 4px 16px 14px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--border-color);
+      flex-shrink: 0;
+    }
+    .mini-wallet-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .mini-wallet-icon-box {
+      width: 36px;
+      height: 36px;
+      background: #f4ecfc;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-purple);
+      font-size: 1.05rem;
+    }
+    body.dark-mode .mini-wallet-icon-box {
+      background: #231936;
+      color: #b388ff;
+    }
+    .mini-wallet-title {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .mini-wallet-amount {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+    .mini-add-money-btn {
+      background: var(--primary-purple);
+      color: #ffffff;
+      border: none;
+      padding: 7px 15px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 2px 8px rgba(92, 27, 183, 0.25);
+    }
+    .mini-add-money-btn:active { transform: scale(0.95); }
+
+    /* SERVICES GRID */
+    .services-grid-exact {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 8px 14px 8px;
+      gap: 15px 4px;
+      flex-shrink: 0;
+    }
+    .grid-item-exact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+    }
+    .grid-item-exact:active { transform: scale(0.96); }
+
+    .icon-box-exact {
+      width: 60px;
+      height: 60px;
+      background: #f4ecfc;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #5c1bb7;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    body.dark-mode .icon-box-exact {
+      background: #231936;
+      color: #b388ff;
+    }
+    .grid-label-exact {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      font-weight: 750;
+      color: var(--text-main);
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .lic-badge-tag {
+      position: absolute;
+      top: -4px;
+      right: 3px;
+      background: #5c1bb7;
+      color: #ffffff;
+      font-size: 0.52rem;
+      font-weight: 900;
+      padding: 1px 4px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .exact-section-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px 8px;
+      flex-shrink: 0;
+    }
+    .exact-section-title-bar h4 {
+      font-size: 1.18rem;
+      font-weight: 850;
+      color: var(--text-main);
+      letter-spacing: -0.3px;
+    }
+    .exact-see-all-btn {
+      background: #f4ecfc;
+      color: #5c1bb7;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      padding: 5px 14px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    body.dark-mode .exact-see-all-btn {
+      background: #271c3d;
+      color: #c4b5fd;
+    }
+
+    /* REFER CARD */
+    .home-refer-card {
+      margin: 10px 16px 14px;
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 13px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      flex-shrink: 0;
+    }
     .refer-left { display: flex; align-items: flex-start; gap: 10px; flex: 1; }
-    .refer-green-icon { width: 36px; height: 36px; border-radius: 11px; background: #e6f9f0; color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; flex-shrink: 0; }
+    .refer-green-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: #e6f9f0;
+      color: #10b981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
     body.dark-mode .refer-green-icon { background: #064e3b; color: #34d399; }
     .refer-texts h4 { font-size: 0.98rem; font-weight: 800; color: var(--text-main); margin-bottom: 2px; }
-    .refer-texts p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; font-weight: 500; }
-    .refer-invite-btn { background: transparent; border: 1px solid #cbd5e1; color: var(--text-main); padding: 6px 16px; border-radius: 20px; font-size: 0.84rem; font-weight: 700; cursor: pointer; margin-left: 6px; white-space: nowrap; }
+    .refer-texts p { font-size: 0.76rem; color: var(--text-muted); line-height: 1.3; font-weight: 500; }
+    .refer-invite-btn {
+      background: transparent;
+      border: 1.5px solid #cbd5e1;
+      color: var(--text-main);
+      padding: 7px 15px;
+      border-radius: 20px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-left: 6px;
+      white-space: nowrap;
+    }
 
-    .bottom-nav { position: fixed; bottom: 0; width: 100%; max-width: 420px; height: 58px; background: var(--card-bg); display: flex; justify-content: space-around; align-items: center; border-top: 1px solid var(--border-color); z-index: 50; padding-bottom: 2px; }
-    .nav-link { display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--text-muted); font-size: 0.65rem; font-weight: 600; background: none; border: none; cursor: pointer; width: 48px; }
+    /* BOTTOM NAVIGATION */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 410px;
+      height: 58px;
+      background: var(--card-bg);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      z-index: 50;
+      padding-bottom: 2px;
+    }
+    .nav-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      font-weight: 600;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 48px;
+    }
     .nav-link i { font-size: 1rem; }
     .nav-link.active { color: var(--primary-purple); }
-    .nav-center-btn { width: 42px; height: 42px; border-radius: 50%; background: var(--primary-purple); color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; box-shadow: 0 4px 12px rgba(92, 27, 183, 0.45); cursor: pointer; border: none; transform: translateY(-5px); }
+    .nav-center-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--primary-purple);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 12px rgba(92, 27, 183, 0.45);
+      cursor: pointer;
+      border: none;
+      transform: translateY(-5px);
+    }
 
-    .page-screen { position: fixed; top: 0; left: 50%; transform: translateX(-50%) translateX(100%); width: 100%; max-width: 420px; height: 100vh; background: var(--bg-color); z-index: 1000; display: flex; flex-direction: column; box-sizing: border-box; overflow-y: auto; will-change: transform; transition: transform 0.25s ease-out; }
+    .page-screen {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) translateX(100%);
+      width: 100%;
+      max-width: 410px;
+      height: 100vh;
+      background: var(--bg-color);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      overflow-y: auto;
+      will-change: transform;
+      transition: transform 0.25s ease-out;
+    }
     .page-screen.open { transform: translateX(-50%) translateX(0%); }
-    .back-btn-circle { width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; color: #ffffff; cursor: pointer; border: none; font-size: 0.85rem; }
+    .back-btn-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      cursor: pointer;
+      border: none;
+      font-size: 0.85rem;
+    }
+
+    /* ALL SERVICES SCREEN STYLES */
+    #allServicesScreen {
+      z-index: 1550;
+      background: var(--bg-color);
+    }
+    .all-srv-category-wrap {
+      padding: 10px 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .all-srv-cat-box {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 14px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+    .all-srv-cat-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .all-srv-cat-title i {
+      color: var(--primary-purple);
+      font-size: 0.92rem;
+    }
+    .all-srv-grid-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px 6px;
+    }
 
     /* SETTINGS */
     #settingsScreen { z-index: 1700; }
@@ -683,17 +1000,17 @@
     .edit-field-group { margin-bottom: 12px; }
     .edit-field-group label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
     .edit-input-pill { background: var(--card-bg); border: 1px solid var(--input-border); border-radius: 11px; padding: 9px 12px; display: flex; align-items: center; justify-content: space-between; }
-    .edit-input-pill input, .edit-input-pill select { width: 100%; border: none; outline: none; background: transparent; font-size: 0.9rem; font-weight: 600; color: var(--text-main); user-select: text !important; }
+    .edit-input-pill input, .edit-input-pill select { width: 100%; border: none; outline: none; background: transparent; font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
     .edit-profile-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
     .clear-all-link { display: flex; align-items: center; gap: 4px; color: var(--text-main); font-weight: 700; font-size: 0.88rem; cursor: pointer; }
     .clear-all-link i { font-size: 0.82rem; }
     .update-profile-btn { background: var(--primary-purple); color: #ffffff; border: none; padding: 10px 20px; border-radius: 35px; font-size: 0.92rem; font-weight: 700; display: flex; align-items: center; gap: 6px; cursor: pointer; box-shadow: 0 4px 14px rgba(92, 27, 183, 0.4); }
     .update-profile-btn i { font-size: 0.78rem; }
 
-    /* HISTORY WITH TRANSACTION ID */
+    /* HISTORY */
     #historyScreen { z-index: 1600; background: #ffffff; color: #1e293b; }
     body.dark-mode #historyScreen { background: #0d1117; color: #f0f6fc; }
-    .hist-custom-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px 10px; background: #ffffff; position: sticky; top: 0; z-index: 10; }
+    .hist-custom-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px 10px; background: #ffffff; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border-color); }
     body.dark-mode .hist-custom-header { background: #0d1117; }
     .hist-back-circle { width: 32px; height: 32px; border-radius: 50%; background: #e9eef7; border: none; display: flex; align-items: center; justify-content: center; color: #1e293b; font-size: 0.82rem; cursor: pointer; }
     body.dark-mode .hist-back-circle { background: #21262d; color: #f0f6fc; }
@@ -702,7 +1019,7 @@
     .hist-search-box { width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 25px; padding: 8px 14px; display: flex; align-items: center; gap: 8px; }
     body.dark-mode .hist-search-box { background: #161b22; border-color: #30363d; }
     .hist-search-box i { color: #94a3b8; font-size: 0.85rem; }
-    .hist-search-box input { flex: 1; border: none; outline: none; background: transparent; font-size: 0.84rem; color: var(--text-main); user-select: text !important; }
+    .hist-search-box input { flex: 1; border: none; outline: none; background: transparent; font-size: 0.84rem; color: var(--text-main); }
     .hist-tabs-container { margin: 0 16px 12px; background: #f1f5f9; border-radius: 11px; display: flex; padding: 3px; justify-content: space-between; }
     body.dark-mode .hist-tabs-container { background: #161b22; border: 1px solid #30363d; }
     .hist-tab-btn { flex: 1; border: none; background: transparent; padding: 7px 3px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; color: #64748b; cursor: pointer; text-align: center; }
@@ -764,29 +1081,52 @@
     .logo-sundirect-exact { background: #ea580c; color: #ffffff; padding: 2px 4px; border-radius: 6px; font-size: 0.68rem; font-weight: 900; }
 
     /* RECHARGE */
-    .recharge-inner { padding: 12px 16px 20px; min-height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+    .recharge-inner { padding: 14px 18px 20px; min-height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
     .recharge-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-    .recharge-header h2 { font-size: 1.18rem; font-weight: 700; color: var(--text-main); }
-    .recharge-body h3 { font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
-    .recharge-body .subtitle { font-size: 0.84rem; color: var(--text-muted); line-height: 1.35; margin-bottom: 16px; }
-    .mobile-input-card { display: flex; align-items: center; background: var(--card-bg); border: 1px solid var(--input-border); border-radius: 12px; padding: 10px 12px; gap: 8px; margin-bottom: 10px; }
-    .mobile-input-card i { font-size: 0.95rem; }
-    .op-circle-selector-card { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1.5px solid var(--primary-purple); border-radius: 12px; padding: 9px 12px; margin-bottom: 14px; cursor: pointer; }
-    .op-circle-info { display: flex; align-items: center; gap: 8px; }
-    .op-circle-info i { color: var(--primary-purple); font-size: 1rem; }
-    .op-circle-text h4 { font-size: 0.84rem; font-weight: 800; color: var(--text-main); }
-    .op-circle-text p { font-size: 0.7rem; color: var(--text-muted); margin-top: 1px; }
-    .plans-btn { width: 100%; background: var(--primary-purple); color: #ffffff; border: none; border-radius: 28px; padding: 10px 14px; font-size: 0.9rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; cursor: pointer; margin-bottom: 18px; }
-    .plans-btn .arrow-bubble { width: 26px; height: 26px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; }
-    .plans-btn .arrow-bubble i { font-size: 0.7rem; }
-    .personal-sec-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
-    .personal-card { background: var(--card-bg); border: 1px solid var(--input-border); border-radius: 13px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; cursor: pointer; }
-    .p-avatar { width: 34px; height: 34px; border-radius: 10px; background: var(--primary-purple); color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; }
-    .p-avatar span.small-t { font-size: 0.46rem; }
-    .p-avatar span.big-t { font-size: 0.72rem; }
-    .p-info h4 { font-size: 0.92rem; font-weight: 700; color: var(--text-main); margin-bottom: 1px; }
-    .p-info p { font-size: 0.76rem; color: var(--text-muted); }
-    .support-footer { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 22px; }
+    .recharge-header h2 { font-size: 1.25rem; font-weight: 800; color: var(--text-main); }
+    .recharge-body h3 { font-size: 1.3rem; font-weight: 850; color: var(--text-main); margin-bottom: 4px; }
+    .recharge-body .subtitle { font-size: 0.86rem; color: var(--text-muted); line-height: 1.35; margin-bottom: 16px; }
+
+    .mobile-input-card {
+      display: flex;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1.8px solid var(--primary-purple);
+      border-radius: 16px;
+      padding: 13px 15px;
+      gap: 10px;
+      margin-bottom: 12px;
+      box-shadow: 0 3px 12px rgba(92, 27, 183, 0.08);
+    }
+    .mobile-input-card i.phone-ic {
+      font-size: 1.2rem;
+      color: var(--primary-purple);
+    }
+    .mobile-input-card i.contact-pick-ic {
+      font-size: 1.2rem;
+      color: var(--primary-purple);
+      cursor: pointer;
+    }
+
+    .op-circle-selector-card { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1.5px solid var(--input-border); border-radius: 14px; padding: 11px 14px; margin-bottom: 16px; cursor: pointer; }
+    .op-circle-info { display: flex; align-items: center; gap: 10px; }
+    .op-circle-info i { color: var(--primary-purple); font-size: 1.1rem; }
+    .op-circle-text h4 { font-size: 0.88rem; font-weight: 800; color: var(--text-main); }
+    .op-circle-text p { font-size: 0.74rem; color: var(--text-muted); margin-top: 1px; }
+
+    .plans-btn { width: 100%; background: var(--primary-purple); color: #ffffff; border: none; border-radius: 28px; padding: 12px 16px; font-size: 0.95rem; font-weight: 750; display: flex; justify-content: space-between; align-items: center; cursor: pointer; margin-bottom: 18px; box-shadow: 0 4px 14px rgba(92, 27, 183, 0.3); }
+    .plans-btn .arrow-bubble { width: 28px; height: 28px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; }
+    .plans-btn .arrow-bubble i { font-size: 0.75rem; }
+
+    .personal-sec-label { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px; font-weight: 600; }
+    .personal-card { background: var(--card-bg); border: 1px solid var(--input-border); border-radius: 14px; padding: 11px 14px; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .p-avatar { width: 36px; height: 36px; border-radius: 11px; background: var(--primary-purple); color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; }
+    .p-avatar span.small-t { font-size: 0.48rem; }
+    .p-avatar span.big-t { font-size: 0.74rem; }
+    .p-info h4 { font-size: 0.95rem; font-weight: 750; color: var(--text-main); margin-bottom: 1px; }
+    .p-info p { font-size: 0.78rem; color: var(--text-muted); }
+
+    .support-footer { text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 22px; }
     .support-footer a { color: var(--primary-purple); font-weight: 600; text-decoration: none; }
 
     .dark-picker-screen { background: #151a28 !important; color: #ffffff !important; }
@@ -809,7 +1149,7 @@
     .plan-search-wrap { padding: 10px 0 6px; }
     .plan-search-input-box { display: flex; align-items: center; background: var(--bg-color); border: 1px solid var(--input-border); border-radius: 24px; padding: 8px 14px; gap: 8px; }
     .plan-search-input-box i { font-size: 0.82rem; }
-    .plan-search-input-box input { border: none; background: transparent; outline: none; font-size: 0.84rem; color: var(--text-main); width: 100%; user-select: text !important; }
+    .plan-search-input-box input { border: none; background: transparent; outline: none; font-size: 0.84rem; color: var(--text-main); width: 100%; }
     .plans-container-list { padding: 10px 12px 24px; display: flex; flex-direction: column; gap: 10px; }
     .plan-card { background: var(--card-bg); border-radius: 14px; padding: 14px 14px 12px; border: 1px solid var(--border-color); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03); cursor: pointer; }
     .plan-card-top-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
@@ -873,7 +1213,7 @@
     .dep-input-label { font-size: 0.75rem; color: #94a3b8; margin-bottom: 4px; display: block; font-weight: 600; }
     .dep-amount-input-wrap { background: #1a2330; border: 1px solid #283548; border-radius: 10px; padding: 9px 11px; display: flex; align-items: center; gap: 6px; margin-bottom: 9px; }
     .dep-amount-input-wrap span.eg { font-size: 0.95rem; color: #94a3b8; font-weight: 700; }
-    .dep-amount-input-wrap input { width: 100%; border: none; background: transparent; outline: none; font-size: 1.1rem; font-weight: 800; color: #ffffff; user-select: text !important; }
+    .dep-amount-input-wrap input { width: 100%; border: none; background: transparent; outline: none; font-size: 1.1rem; font-weight: 800; color: #ffffff; }
     .dep-chips-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-bottom: 12px; }
     .dep-chip-btn { background: #1a2330; border: 1px solid #283548; color: #ffffff; padding: 6px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; text-align: center; }
     .manual-deposit-box { background: #161e29; border: 1px solid #243042; border-radius: 14px; padding: 12px 10px; text-align: center; margin-bottom: 12px; }
@@ -970,7 +1310,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
   <!-- STEP 1: SPLASH SCREEN -->
   <div class="auth-screen-overlay" id="splashScreen">
@@ -1063,11 +1403,11 @@
 
     <div class="auth-body-container">
       <div>
-        <h2 style="font-size:1.5rem; font-weight:800; color:var(--text-main); margin-bottom:5px;">Welcome Back!</h2>
-        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:18px;">Enter your phone number to continue</p>
+        <h2 style="font-size:1.6rem; font-weight:850; color:var(--text-main); margin-bottom:6px;">Welcome Back!</h2>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:22px;">Enter your mobile number to continue</p>
 
         <div class="manual-phone-input-card">
-          <div style="font-weight: 800; color: var(--text-main); border-right: 1.5px solid var(--border-color); padding-right: 8px; white-space:nowrap; display:flex; align-items:center; gap:5px; font-size:0.9rem;">
+          <div class="country-flag">
             <span>🇮🇳</span> +91
           </div>
           <input type="tel" id="userManualPhoneInput" placeholder="Enter 10-digit number" maxlength="10" autocomplete="tel" />
@@ -1197,45 +1537,64 @@
 
   <!-- MAIN APP CONTAINER -->
   <div class="app-container">
-    <header class="top-bar">
-      <div class="logo">Pay4<span>Smart</span></div>
-      <div class="top-actions">
-        <button class="theme-toggle-btn" id="themeBtn" title="Toggle Theme" onclick="toggleThemeGlobal()">
-          <i class="fa-regular fa-sun" id="themeIcon"></i>
-        </button>
-        <div class="whatsapp-btn" onclick="openWhatsAppChat()" title="WhatsApp Chat">
+
+    <!-- HOMESCREEN HEADER -->
+    <header class="top-bar-exact">
+      <div class="exact-brand-logo">
+        Pay4<span class="purple-smart">Smart</span><span class="dot-accent">.</span>
+      </div>
+      <div class="exact-top-actions">
+        <button class="exact-action-icon-btn whatsapp-ic" onclick="openWhatsAppChat()" title="WhatsApp Chat">
           <i class="fa-brands fa-whatsapp"></i>
-        </div>
+        </button>
+        <button class="exact-action-icon-btn dark-mode-ic" onclick="toggleThemeGlobal()" title="Toggle Dark/Light Mode">
+          <i class="fa-regular fa-moon" id="headerDarkIcon"></i>
+        </button>
       </div>
     </header>
 
-    <!-- BANNER SLIDER WITH PERFECT FULL VISIBILITY -->
+    <!-- AUTOMATIC 2-BANNER CAROUSEL -->
     <div class="slider-container" id="sliderContainer">
       <div class="slider-track" id="sliderTrack">
-        <!-- 1. UP TO 5% CASHBACK BANNER -->
-        <div class="slide slide-1">
-          <div class="cashback-banner-built-in">
-            <div class="banner-left-content">
-              <div class="banner-brand-chip"><i class="fa-solid fa-bolt" style="color: #fbbf24;"></i> pey4smart</div>
-              <span class="banner-upto-tag">UP TO</span>
-              <span class="banner-big-number">5%</span>
-              <span class="banner-cashback-title">CASHBACK</span>
+        
+        <!-- 1. POSTER BANNER -->
+        <div class="slide-item">
+          <div class="banner-img-screen" onclick="openRechargePage()">
+            <img src="banner.jpg" alt="Pay4Smart Up to 5% Cashback" onerror="if(this.src.indexOf('14899_2.jpg')===-1) this.src='14899_2.jpg';" />
+          </div>
+        </div>
+
+        <!-- 2. INSTAGRAM PROMO BANNER -->
+        <div class="slide-item">
+          <div class="banner-insta-screen" onclick="openInstagramDirect()">
+            <div class="insta-promo-left">
+              <span class="insta-promo-small-tag">FOLLOW OUR</span>
+              <h3 class="insta-promo-title">INSTAGRAM<br>PAGE!</h3>
+              <div class="insta-features-row">
+                <div class="insta-feat-item">
+                  <div class="insta-feat-circle"><i class="fa-solid fa-user-group"></i></div>
+                  <span class="insta-feat-label">Latest Updates</span>
+                </div>
+                <div class="insta-feat-item">
+                  <div class="insta-feat-circle"><i class="fa-solid fa-gift"></i></div>
+                  <span class="insta-feat-label">Exciting Offers</span>
+                </div>
+                <div class="insta-feat-item">
+                  <div class="insta-feat-circle"><i class="fa-solid fa-bell"></i></div>
+                  <span class="insta-feat-label">Announcements</span>
+                </div>
+              </div>
             </div>
-            <div class="banner-right-art">
-              <div class="gold-coin-3d">₹</div>
+            <div class="insta-promo-right">
+              <div class="insta-app-card-3d">
+                <i class="fa-brands fa-instagram"></i>
+              </div>
             </div>
           </div>
         </div>
-        <!-- 2. INSTAGRAM OFFICIAL UPDATES BANNER -->
-        <div class="slide slide-custom-2" ondblclick="openInstagramDirect()">
-          <div class="slide-content">
-            <h3>OFFICIAL UPDATES</h3>
-            <p>Follow us for exclusive promo codes</p>
-            <button class="slide-btn" onclick="event.stopPropagation(); openInstagramDirect();">Follow</button>
-          </div>
-          <div class="slide-art"><i class="fa-brands fa-instagram"></i></div>
-        </div>
+
       </div>
+
       <!-- 2 DOTS -->
       <div class="slider-dots">
         <div class="dot active"></div>
@@ -1243,63 +1602,130 @@
       </div>
     </div>
 
-    <!-- WALLET CARD -->
-    <div class="wallet-card-exact">
-      <div class="wallet-info-group">
-        <div class="exact-wallet-icon-box">
-          <svg viewBox="0 0 24 24"><path d="M21 7.28V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-2.28c.59-.35 1-.99 1-1.72V9c0-.73-.41-1.37-1-1.72zM20 9v6h-7V9h7zM5 19V5h14v2h-6c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h6v2H5z"></path><circle cx="16" cy="12" r="1.5"></circle></svg>
+    <!-- COMPACT MINI WALLET BAR -->
+    <div class="mini-wallet-container">
+      <div class="mini-wallet-left">
+        <div class="mini-wallet-icon-box">
+          <i class="fa-solid fa-wallet"></i>
         </div>
-        <div class="exact-wallet-texts">
-          <span class="exact-wallet-title">Wallet Balance</span>
-          <span class="exact-wallet-amount">
-            <span class="currency-symbol">₹</span>
-            <span id="balanceDisplay">0.00</span>
-          </span>
+        <div>
+          <div class="mini-wallet-title">Wallet Balance</div>
+          <div class="mini-wallet-amount">₹<span id="balanceDisplay">0.00</span></div>
         </div>
       </div>
-      <button class="exact-add-money-btn" onclick="openDepositFundsModal()">
-        <span>Add Money</span>
-        <i class="fa-solid fa-chevron-right"></i>
+      <button class="mini-add-money-btn" onclick="openDepositFundsModal()">
+        <i class="fa-solid fa-plus" style="font-size:0.7rem;"></i>
+        <span>Add</span>
       </button>
     </div>
 
-    <!-- SERVICES GRID WITH COMPACT LIGHT ICONS -->
-    <section class="services-grid">
-      <div class="grid-item" id="srv_mobile_recharge" onclick="checkServiceAccess('mobile_recharge', openRechargePage)">
-        <div class="icon-box">
-          <div class="dynamic-operator-box">
-            <div class="op-slide-logo logo-jio-anim active" id="animJio">Jio</div>
-            <div class="op-slide-logo logo-airtel-anim" id="animAirtel"><i class="fa-solid fa-wifi"></i></div>
-            <div class="op-slide-logo logo-vi-anim" id="animVi">!VI</div>
-            <div class="op-slide-logo logo-bsnl-anim" id="animBsnl">BSNL</div>
-          </div>
+    <!-- MAIN SERVICES GRID -->
+    <section class="services-grid-exact">
+      <!-- Mobile Recharge -->
+      <div class="grid-item-exact" id="srv_mobile_recharge" onclick="checkServiceAccess('mobile_recharge', openRechargePage)">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-mobile-screen-button"></i>
         </div>
-        <span class="grid-label">Mobile<br>Recharge</span>
-      </div>
-      
-      <div class="grid-item" id="srv_dth_recharge" onclick="checkServiceAccess('dth_recharge', openDthPage)">
-        <div class="icon-box"><i class="fa-solid fa-satellite-dish"></i></div>
-        <span class="grid-label">DTH/TV<br>Recharge</span>
+        <span class="grid-label-exact">Mobile<br>Recharge</span>
       </div>
 
-      <div class="grid-item"><div class="icon-box"><i class="fa-solid fa-car"></i></div><span class="grid-label">FASTag<br>Recharge</span></div>
-      <div class="grid-item"><div class="icon-box"><i class="fa-brands fa-google-play"></i></div><span class="grid-label">Google Play<br>Voucher</span></div>
+      <!-- DTH/TV Recharge -->
+      <div class="grid-item-exact" id="srv_dth_recharge" onclick="checkServiceAccess('dth_recharge', openDthPage)">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-satellite-dish"></i>
+        </div>
+        <span class="grid-label-exact">DTH/TV<br>Recharge</span>
+      </div>
+
+      <!-- FASTag Recharge -->
+      <div class="grid-item-exact" id="srv_fastag" onclick="checkServiceAccess('fastag')">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-car-side"></i>
+        </div>
+        <span class="grid-label-exact">FASTag<br>Recharge</span>
+      </div>
+
+      <!-- Google Play Voucher -->
+      <div class="grid-item-exact" id="srv_google_play" onclick="checkServiceAccess('google_play')">
+        <div class="icon-box-exact">
+          <i class="fa-brands fa-google-play"></i>
+        </div>
+        <span class="grid-label-exact">Google<br>Play<br>Voucher</span>
+      </div>
     </section>
 
-    <div class="section-title-bar">
-      <h4>Pay Utilities</h4>
-      <a href="#" class="see-all-link">See all</a>
+    <!-- PAY BILLS SECTION TITLE -->
+    <div class="exact-section-title-bar">
+      <h4>Pay Bills</h4>
+      <div class="exact-see-all-btn" onclick="openAllServicesScreen()">See all</div>
     </div>
 
-    <section class="services-grid">
-      <div class="grid-item" id="srv_postpaid" onclick="checkServiceAccess('postpaid')"><div class="icon-box"><i class="fa-solid fa-phone"></i></div><span class="grid-label">Postpaid</span></div>
-      <div class="grid-item" id="srv_electricity" onclick="checkServiceAccess('electricity')"><div class="icon-box"><i class="fa-regular fa-lightbulb"></i></div><span class="grid-label">Electricity</span></div>
-      <div class="grid-item" id="srv_emi" onclick="checkServiceAccess('emi')"><div class="icon-box"><i class="fa-regular fa-calendar-check"></i></div><span class="grid-label">EMI</span></div>
-      <div class="grid-item" id="srv_insurance" onclick="checkServiceAccess('insurance')"><div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div><span class="grid-label">Insurance</span></div>
-      <div class="grid-item" id="srv_broadband" onclick="checkServiceAccess('broadband')"><div class="icon-box"><i class="fa-solid fa-wifi"></i></div><span class="grid-label">Broadband</span></div>
-      <div class="grid-item" id="srv_lpg" onclick="checkServiceAccess('lpg')"><div class="icon-box"><i class="fa-solid fa-gas-pump"></i></div><span class="grid-label">LPG<br>Gas</span></div>
-      <div class="grid-item" id="srv_water" onclick="checkServiceAccess('water')"><div class="icon-box"><i class="fa-solid fa-droplet"></i></div><span class="grid-label">Water</span></div>
-      <div class="grid-item"><div class="icon-box"><i class="fa-solid fa-shapes"></i></div><span class="grid-label">More</span></div>
+    <!-- UTILITIES GRID -->
+    <section class="services-grid-exact">
+      <!-- Postpaid -->
+      <div class="grid-item-exact" id="srv_postpaid" onclick="checkServiceAccess('postpaid')">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-mobile-screen"></i>
+        </div>
+        <span class="grid-label-exact">Postpaid</span>
+      </div>
+
+      <!-- Electricity -->
+      <div class="grid-item-exact" id="srv_electricity" onclick="checkServiceAccess('electricity')">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <span class="grid-label-exact">Electricity</span>
+      </div>
+
+      <!-- EMI -->
+      <div class="grid-item-exact" id="srv_emi" onclick="checkServiceAccess('emi')">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <span class="grid-label-exact">EMI</span>
+      </div>
+
+      <!-- Insurance with LIC Badge -->
+      <div class="grid-item-exact" id="srv_insurance" onclick="checkServiceAccess('insurance')">
+        <div class="icon-box-exact">
+          <span class="lic-badge-tag">LIC</span>
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <span class="grid-label-exact">Insurance</span>
+      </div>
+
+      <!-- Broadband -->
+      <div class="grid-item-exact" id="srv_broadband" onclick="checkServiceAccess('broadband')">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-wifi"></i>
+        </div>
+        <span class="grid-label-exact">Broadband</span>
+      </div>
+
+      <!-- LPG Booking -->
+      <div class="grid-item-exact" id="srv_lpg" onclick="checkServiceAccess('lpg')">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-gas-pump"></i>
+        </div>
+        <span class="grid-label-exact">LPG<br>Booking</span>
+      </div>
+
+      <!-- Water -->
+      <div class="grid-item-exact" id="srv_water" onclick="checkServiceAccess('water')">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-droplet"></i>
+        </div>
+        <span class="grid-label-exact">Water</span>
+      </div>
+
+      <!-- See All -->
+      <div class="grid-item-exact" onclick="openAllServicesScreen()">
+        <div class="icon-box-exact">
+          <i class="fa-solid fa-sitemap"></i>
+        </div>
+        <span class="grid-label-exact">See All</span>
+      </div>
     </section>
 
     <!-- REFER CARD -->
@@ -1314,6 +1740,7 @@
       <button class="refer-invite-btn" onclick="inviteFriends()">Invite</button>
     </div>
 
+    <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav">
       <button class="nav-link active"><i class="fa-solid fa-house"></i><span>Home</span></button>
       <button class="nav-link" onclick="openMarginScreen()"><i class="fa-solid fa-percent"></i><span>Margin</span></button>
@@ -1321,6 +1748,112 @@
       <button class="nav-link" onclick="openHistoryScreen()"><i class="fa-solid fa-file-invoice"></i><span>History</span></button>
       <button class="nav-link" onclick="openSettingsScreen()"><i class="fa-solid fa-gear"></i><span>Setting</span></button>
     </nav>
+  </div>
+
+  <!-- ALL SERVICES SCREEN -->
+  <div class="page-screen" id="allServicesScreen">
+    <div class="hist-custom-header">
+      <button class="hist-back-circle" onclick="closeAllServicesScreen()"><i class="fa-solid fa-chevron-left"></i></button>
+      <h2>All Services</h2>
+    </div>
+
+    <div class="hist-search-wrap" style="padding: 10px 16px 8px;">
+      <div class="hist-search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="serviceSearchInput" placeholder="Search service (e.g. mobile, electricity...)" oninput="filterAllServicesList(this.value)" />
+      </div>
+    </div>
+
+    <div class="all-srv-category-wrap" id="allServicesContent">
+      <div class="all-srv-cat-box srv-search-group">
+        <div class="all-srv-cat-title"><i class="fa-solid fa-bolt"></i> Recharge Services</div>
+        <div class="all-srv-grid-inner">
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); openRechargePage();">
+            <div class="icon-box-exact"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <span class="grid-label-exact">Mobile<br>Prepaid</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); openDthPage();">
+            <div class="icon-box-exact"><i class="fa-solid fa-satellite-dish"></i></div>
+            <span class="grid-label-exact">DTH/TV<br>Recharge</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('fastag');">
+            <div class="icon-box-exact"><i class="fa-solid fa-car-side"></i></div>
+            <span class="grid-label-exact">FASTag<br>Recharge</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('google_play');">
+            <div class="icon-box-exact"><i class="fa-brands fa-google-play"></i></div>
+            <span class="grid-label-exact">Google<br>Play</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('cable_tv');">
+            <div class="icon-box-exact"><i class="fa-solid fa-tv"></i></div>
+            <span class="grid-label-exact">Cable<br>TV</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="all-srv-cat-box srv-search-group">
+        <div class="all-srv-cat-title"><i class="fa-solid fa-file-invoice-dollar"></i> Bill Payments</div>
+        <div class="all-srv-grid-inner">
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('electricity');">
+            <div class="icon-box-exact"><i class="fa-solid fa-lightbulb"></i></div>
+            <span class="grid-label-exact">Electricity</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('postpaid');">
+            <div class="icon-box-exact"><i class="fa-solid fa-mobile-screen"></i></div>
+            <span class="grid-label-exact">Postpaid</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('broadband');">
+            <div class="icon-box-exact"><i class="fa-solid fa-wifi"></i></div>
+            <span class="grid-label-exact">Broadband</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('lpg');">
+            <div class="icon-box-exact"><i class="fa-solid fa-gas-pump"></i></div>
+            <span class="grid-label-exact">LPG Gas</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('water');">
+            <div class="icon-box-exact"><i class="fa-solid fa-droplet"></i></div>
+            <span class="grid-label-exact">Water</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('piped_gas');">
+            <div class="icon-box-exact"><i class="fa-solid fa-fire-burner"></i></div>
+            <span class="grid-label-exact">Piped Gas</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('landline');">
+            <div class="icon-box-exact"><i class="fa-solid fa-phone-volume"></i></div>
+            <span class="grid-label-exact">Landline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="all-srv-cat-box srv-search-group">
+        <div class="all-srv-cat-title"><i class="fa-solid fa-shield-halved"></i> Financial Services</div>
+        <div class="all-srv-grid-inner">
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('insurance');">
+            <div class="icon-box-exact">
+              <span class="lic-badge-tag">LIC</span>
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <span class="grid-label-exact">Insurance</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('emi');">
+            <div class="icon-box-exact"><i class="fa-solid fa-calendar-days"></i></div>
+            <span class="grid-label-exact">EMI Pay</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('credit_card');">
+            <div class="icon-box-exact"><i class="fa-solid fa-credit-card"></i></div>
+            <span class="grid-label-exact">Credit Card</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('tax');">
+            <div class="icon-box-exact"><i class="fa-solid fa-landmark"></i></div>
+            <span class="grid-label-exact">Municipal Tax</span>
+          </div>
+          <div class="grid-item-exact srv-card-item" onclick="closeAllServicesScreen(); checkServiceAccess('education');">
+            <div class="icon-box-exact"><i class="fa-solid fa-graduation-cap"></i></div>
+            <span class="grid-label-exact">Education</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- LOGOUT CONFIRMATION POPUP MODAL -->
@@ -1435,17 +1968,15 @@
         <i class="fa-solid fa-pen profile-edit-pen" title="Edit Profile" onclick="openEditProfileScreen()"></i>
       </div>
 
-      <div class="wallet-card-exact" style="margin: 0 0 8px 0;">
-        <div class="wallet-info-group">
-          <div class="exact-wallet-icon-box">
-            <svg viewBox="0 0 24 24"><path d="M21 7.28V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-2.28c.59-.35 1-.99 1-1.72V9c0-.73-.41-1.37-1-1.72zM20 9v6h-7V9h7zM5 19V5h14v2h-6c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h6v2H5z"></path><circle cx="16" cy="12" r="1.5"></circle></svg>
-          </div>
-          <div class="exact-wallet-texts">
-            <span class="exact-wallet-title">Wallet Balance</span>
-            <span class="exact-wallet-amount"><span class="currency-symbol">₹</span><span id="settingWalletDisplay">0.00</span></span>
+      <div class="mini-wallet-container" style="margin: 0 0 10px 0;">
+        <div class="mini-wallet-left">
+          <div class="mini-wallet-icon-box"><i class="fa-solid fa-wallet"></i></div>
+          <div>
+            <div class="mini-wallet-title">Wallet Balance</div>
+            <div class="mini-wallet-amount">₹<span id="settingWalletDisplay">0.00</span></div>
           </div>
         </div>
-        <button class="exact-add-money-btn" onclick="openDepositFundsModal()"><span>Add Money</span></button>
+        <button class="mini-add-money-btn" onclick="openDepositFundsModal()"><span>Add Money</span></button>
       </div>
 
       <div class="sale-profit-grid">
@@ -1690,11 +2221,13 @@
         <div class="recharge-body">
           <h3>Prepaid</h3>
           <p class="subtitle">Enter mobile number and choose operator to get plans.</p>
+          
           <div class="mobile-input-card">
             <i class="fa-solid fa-mobile-screen-button phone-ic"></i>
             <input type="tel" id="mobileInput" placeholder="Mobile Number" maxlength="10" inputmode="numeric" />
-            <i class="fa-solid fa-address-book contact-pick-ic" style="cursor:pointer;" onclick="pickContactNative()"></i>
+            <i class="fa-solid fa-address-book contact-pick-ic" title="Pick Contact" onclick="pickContactNative()"></i>
           </div>
+
           <div class="op-circle-selector-card" onclick="openOperatorPickerScreen()">
             <div class="op-circle-info">
               <i class="fa-solid fa-tower-cell"></i>
@@ -1957,7 +2490,6 @@
       "Uttar Pradesh (East)", "Uttar Pradesh (West)", "West Bengal"
     ];
 
-    // GENERATE UNIQUE ORDER / TXN ID
     function generateTxnId() {
       return "TXN" + Date.now().toString().slice(-6) + Math.floor(100 + Math.random() * 900);
     }
@@ -1985,11 +2517,69 @@
       });
     }
 
-    // 2. FAST APP LAUNCH
+    // 2. AUTOMATIC 2-BANNER SLIDER LOGIC
+    let currentSlide = 0;
+    const totalSlides = 2;
+    let sliderTimer = null;
+    const track = document.getElementById('sliderTrack');
+    const dots = document.querySelectorAll('.slider-dots .dot');
+
+    function showSlide(index) {
+      currentSlide = index;
+      track.style.transform = `translateX(-${currentSlide * 50}%)`;
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlide);
+      });
+    }
+
+    function startAutoSlider() {
+      if (sliderTimer) clearInterval(sliderTimer);
+      sliderTimer = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }, 3500);
+    }
+
+    function initSwipeBanner() {
+      const container = document.getElementById('sliderContainer');
+      let startX = 0;
+      let endX = 0;
+
+      container.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        clearInterval(sliderTimer);
+      }, { passive: true });
+
+      container.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        if (startX - endX > 40) {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          showSlide(currentSlide);
+        } else if (endX - startX > 40) {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+          showSlide(currentSlide);
+        }
+        startAutoSlider();
+      }, { passive: true });
+    }
+
+    // 3. FAST APP LAUNCH & COPY/SELECT PREVENTION
     window.addEventListener('DOMContentLoaded', () => {
       listenToLiveAdminControls();
-      initSliderSwipe();
       renderCircleList();
+      startAutoSlider();
+      initSwipeBanner();
+
+      document.addEventListener('contextmenu', e => {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+        }
+      });
+      document.addEventListener('selectstart', e => {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+        }
+      });
 
       const savedPhone = localStorage.getItem('pay4smart_logged_in_phone');
       if (savedPhone) {
@@ -2009,78 +2599,34 @@
       wrap.style.display = chk.checked ? 'flex' : 'none';
     }
 
-    // 3. TOP BANNER SLIDER
-    const container = document.getElementById('sliderContainer');
-    const track = document.getElementById('sliderTrack');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0, startX = 0, currentX = 0, isDragging = false, autoSlideInterval = null;
-
-    function updateSlider() {
-      track.style.transition = 'transform 0.3s ease-out';
-      track.style.transform = `translateX(-${currentIndex * 50}%)`;
-      dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
-    }
-
-    function initSliderSwipe() {
-      container.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-        track.style.transition = 'none';
-        clearInterval(autoSlideInterval);
-      }, { passive: true });
-
-      container.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        currentX = e.touches[0].clientX;
-      }, { passive: true });
-
-      container.addEventListener('touchend', () => {
-        if (!isDragging) return;
-        isDragging = false;
-        const diffX = startX - currentX;
-        if (currentX !== 0 && Math.abs(diffX) > 40) {
-          if (diffX > 0 && currentIndex < 1) currentIndex++;
-          else if (diffX < 0 && currentIndex > 0) currentIndex--;
-        }
-        currentX = 0;
-        updateSlider();
-        startAutoSlide();
-      });
-      startAutoSlide();
-    }
-
-    function startAutoSlide() {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % 2;
-        updateSlider();
-      }, 4000);
-    }
-
     function openInstagramDirect() {
       window.open('https://www.instagram.com/pay4smart.online?cplk=MWptOW81dmVpemNtZA==', '_blank');
     }
 
-    // 4. CHAT & SHARE
+    // 4. CHAT & SHARE (FIXED WITH MOBILE NUMBER INCLUDED IN URL)
     function openWhatsAppChat() {
       const targetPhone = currentSupportWhatsapp.replace(/\D/g, '');
-      window.open(`https://wa.me/${targetPhone}?text=${encodeURIComponent("Hi Pay4Smart Support")}`, "_blank");
+      window.open(`https://wa.me/${targetPhone}?text=${encodeURIComponent("Hi Pay4Smart Support Team")}`, "_blank");
     }
 
     async function inviteFriends() {
-      const shareUrl = 'https://pay4smart.app/join?ref=' + (userSelectedPhone || '9002849487');
-      const shareData = {
-        title: 'Pay4Smart App',
-        text: 'Join Pay4Smart to get unlimited cashback on Mobile & DTH recharges!',
-        url: shareUrl
-      };
+      const baseUrl = 'https://pay4smart-weblogin.netlify.app/';
+      const shareUrl = userSelectedPhone ? `${baseUrl}?ref=${userSelectedPhone}` : baseUrl;
+      const shareText = `Join Pay4Smart to get unlimited cashback on Mobile & DTH recharges! ${shareUrl}`;
+      
       if (navigator.share) {
-        try { await navigator.share(shareData); } catch (err) {}
+        try { 
+          await navigator.share({
+            title: 'Pay4Smart App',
+            text: shareText,
+            url: shareUrl
+          }); 
+        } catch (err) {}
       } else {
         if (navigator.clipboard) {
-          navigator.clipboard.writeText(shareUrl);
+          navigator.clipboard.writeText(shareText);
         }
-        showAppCustomAlert("Refer & Earn", "Referral link copied to clipboard:\n" + shareUrl);
+        showAppCustomAlert("Refer & Earn", "Referral link copied to clipboard:\n" + shareText);
       }
     }
 
@@ -2319,7 +2865,6 @@
       });
     }
 
-    // REGISTRATION COMPLETE
     function completeRegistrationAndEnterApp() {
       const name = document.getElementById('regFullNameInput').value.trim();
       const email = document.getElementById('regEmailInput').value.trim();
@@ -2432,7 +2977,6 @@
         timestamp: firebase.database.ServerValue.TIMESTAMP
       };
 
-      // Add to user history as pending deposit with Txn ID
       db.ref(`users/${userSelectedPhone}/history`).push({
         txnId: txnId,
         title: "Deposit Request",
@@ -2563,21 +3107,21 @@
       });
     }
 
-    // 13. TPIN RECHARGE CONFIRM (REAL PAYICON API INTEGRATION)
+    // 13. TPIN RECHARGE CONFIRM
     function getPayIconProviderCode(opName, type) {
       if (type === 'mobile') {
-        if (opName.includes('Jio')) return 8;              // JIO Mobile
-        if (opName.includes('Airtel')) return 5;           // Airtel Mobile
-        if (opName.includes('VI')) return 10;              // VI Mobile
-        if (opName.includes('BSNL Topup')) return 7;       // BSNL Talktime
-        if (opName.includes('BSNL Combo')) return 6;       // BSNL Special Tariff
+        if (opName.includes('Jio')) return 8;
+        if (opName.includes('Airtel')) return 5;
+        if (opName.includes('VI')) return 10;
+        if (opName.includes('BSNL Topup')) return 7;
+        if (opName.includes('BSNL Combo')) return 6;
         return 8;
       } else if (type === 'dth') {
-        if (opName.includes('Airtel')) return 11;          // Airtel Digital TV
-        if (opName.includes('Dish')) return 15;            // Dish TV
-        if (opName.includes('Tata')) return 14;            // Tata Play
-        if (opName.includes('D2H')) return 16;             // Videocon D2H
-        if (opName.includes('Sun')) return 17;             // Sun Direct
+        if (opName.includes('Airtel')) return 11;
+        if (opName.includes('Dish')) return 15;
+        if (opName.includes('Tata')) return 14;
+        if (opName.includes('D2H')) return 16;
+        if (opName.includes('Sun')) return 17;
         return 11;
       }
       return 8;
@@ -2592,11 +3136,16 @@
       document.getElementById('rechargeTpin3dModal').classList.add('open');
     }
 
-    function closeRechargeTpinModal() { document.getElementById('rechargeTpin3dModal').classList.remove('open'); }
+    function closeRechargeTpinModal() { 
+      document.getElementById('rechargeTpin3dModal').classList.remove('open'); 
+    }
 
     async function verifyAndExecuteRecharge() {
       const pin = document.getElementById('authTpinInput').value.trim();
-      if (pin !== userTpin) { showAppCustomAlert("Security Error", "Incorrect TPIN! Please try again."); return; }
+      if (pin !== userTpin) { 
+        showAppCustomAlert("Security Error", "Incorrect TPIN! Please try again."); 
+        return; 
+      }
       if (currentBalance < selectedPlanObj.price) {
         showAppCustomAlert("Low Balance", "Insufficient wallet balance! Please add funds.");
         closeRechargeTpinModal();
@@ -2613,6 +3162,9 @@
       const originalText = confirmBtn.innerText;
       confirmBtn.innerText = "Processing...";
       confirmBtn.disabled = true;
+
+      // Close TPIN modal immediately
+      closeRechargeTpinModal();
 
       try {
         const response = await fetch("/.netlify/functions/recharge", {
@@ -2669,7 +3221,6 @@
         });
 
         saveUserDataToFirebase();
-        closeRechargeTpinModal();
 
         document.getElementById('rechargeSuccessDetails').innerText = `Order ID: ${mainTxnId}\nAccount: ${num}\nAmount: ₹${selectedPlanObj.price}\nOperator: ${opName}\nResponse: ${resData.message || resData.status || 'Success'}`;
         document.getElementById('rechargeSuccess3dModal').classList.add('open');
@@ -2778,7 +3329,7 @@
       });
     }
 
-    // 16. APP NAVIGATION
+    // 16. APP NAVIGATION & THEME TOGGLE
     function openRechargePage() { document.getElementById('rechargeScreen').classList.add('open'); }
     function closeRechargePage() { document.getElementById('rechargeScreen').classList.remove('open'); }
     function selectPersonalNumber() { document.getElementById('mobileInput').value = userSelectedPhone; }
@@ -2793,8 +3344,41 @@
     function closeHistoryScreen() { document.getElementById('historyScreen').classList.remove('open'); }
     function openMarginScreen() { document.getElementById('marginScreen').classList.add('open'); }
     function closeMarginScreen() { document.getElementById('marginScreen').classList.remove('open'); }
-    function toggleThemeGlobal() { document.body.classList.toggle('dark-mode'); }
-    function toggleDarkSwitch(cb) { document.body.classList.toggle('dark-mode', cb.checked); }
+    
+    // ALL SERVICES SCREEN CONTROLS
+    function openAllServicesScreen() { document.getElementById('allServicesScreen').classList.add('open'); }
+    function closeAllServicesScreen() { document.getElementById('allServicesScreen').classList.remove('open'); }
+
+    function filterAllServicesList(keyword) {
+      const val = keyword.trim().toLowerCase();
+      const items = document.querySelectorAll('#allServicesContent .srv-card-item');
+      items.forEach(el => {
+        const text = el.innerText.toLowerCase();
+        el.style.display = text.includes(val) ? 'flex' : 'none';
+      });
+      document.querySelectorAll('#allServicesContent .srv-search-group').forEach(grp => {
+        const visibleItems = grp.querySelectorAll('.srv-card-item:not([style*="display: none"])');
+        grp.style.display = visibleItems.length > 0 ? 'block' : 'none';
+      });
+    }
+
+    function toggleThemeGlobal() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      const icon = document.getElementById('headerDarkIcon');
+      if (icon) {
+        icon.className = isDark ? "fa-solid fa-sun" : "fa-regular fa-moon";
+      }
+      const stSwitch = document.getElementById('settingsDarkSwitch');
+      if (stSwitch) stSwitch.checked = isDark;
+    }
+    function toggleDarkSwitch(cb) {
+      document.body.classList.toggle('dark-mode', cb.checked);
+      const icon = document.getElementById('headerDarkIcon');
+      if (icon) {
+        icon.className = cb.checked ? "fa-solid fa-sun" : "fa-regular fa-moon";
+      }
+    }
 
     function clearProfileForm() {
       document.getElementById('editNameInput').value = '';
@@ -2813,7 +3397,7 @@
       showAppCustomAlert("Profile", "Profile updated successfully!");
     }
 
-    // 17. HISTORY LIST WITH TXN ID MENTIONED
+    // 17. HISTORY LIST WITH TXN ID
     function setHistoryFilterTab(tabName) {
       currentHistoryTab = tabName;
       document.querySelectorAll('.hist-tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -2895,20 +3479,6 @@
       document.getElementById('infoModal').classList.add('open');
     }
     function closeInfoModal() { document.getElementById('infoModal').classList.remove('open'); }
-
-    // Operator animation
-    const opLogos = [
-      document.getElementById('animJio'),
-      document.getElementById('animAirtel'),
-      document.getElementById('animVi'),
-      document.getElementById('animBsnl')
-    ];
-    let currentOpIndex = 0;
-    setInterval(() => {
-      if (opLogos[currentOpIndex]) opLogos[currentOpIndex].classList.remove('active');
-      currentOpIndex = (currentOpIndex + 1) % opLogos.length;
-      if (opLogos[currentOpIndex]) opLogos[currentOpIndex].classList.add('active');
-    }, 2200);
   </script>
 </body>
 </html>
